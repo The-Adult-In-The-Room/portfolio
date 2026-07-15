@@ -11,11 +11,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "format": "biome format",
+    "format": "biome format --write",
     "lint": "biome lint",
     "check": "biome check",
     "start": "node .output/server/index.mjs",
-    "verify": "npm run check && npm run test"
+    "verify": "npm run check && npm run test",
+    "autofix": "npm run format && biome check --fix"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
