@@ -13,7 +13,7 @@
     "generate-routes": "tsr generate",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "start": "node .output/server/index.mjs",
     "verify": "biome ci && npm run test",
     "fix": "biome check --write"
