@@ -31,77 +31,72 @@ type Project = {
 
 const projects: Project[] = [
 	{
-		title: "DevFlow",
+		title: "Lorebrary",
 		description:
-			"Developer productivity dashboard aggregating GitHub activity, CI/CD status, and deployment metrics.",
+			"A lore and reference library built with TanStack Start, featuring SSR, type-safe routing, and a polished UI.",
 		longDescription:
-			"A unified dashboard that pulls data from GitHub, CI/CD pipelines, and deployment platforms to give developers a single source of truth for their project health. Features real-time updates, customizable widgets, and team collaboration tools.",
-		tags: ["React", "TypeScript", "Node.js", "GraphQL", "PostgreSQL"],
+			"A full-stack web application built on TanStack Start with Tailwind CSS and Shadcn UI. Features server-side rendering, type-safe data fetching with Drizzle ORM, and a clean component architecture.",
+		tags: [
+			"TypeScript",
+			"TanStack Start",
+			"Tailwind CSS",
+			"Shadcn UI",
+			"Drizzle",
+		],
 		category: "fullstack",
 		status: "live",
-		repoUrl: "https://github.com",
-		liveUrl: "https://example.com",
-		year: "2024",
+		repoUrl: "https://github.com/The-Adult-In-The-Room/Lorebrary-start",
+		liveUrl: "https://182350.up.railway.app",
+		year: "2025",
 	},
 	{
-		title: "Pulse API",
+		title: "POE2 Tools",
 		description:
-			"Real-time health monitoring API with webhook integrations, alerting, and status page generation.",
+			"A suite of tools for Path of Exile 2, including a weapon DPS calculator for theorycrafting builds.",
 		longDescription:
-			"A high-performance health monitoring service that checks endpoints at configurable intervals, triggers alerts via multiple channels (Slack, email, PagerDuty), and generates beautiful public status pages. Built for reliability and scale.",
-		tags: ["Go", "PostgreSQL", "Redis", "Docker", "gRPC"],
+			"A collection of utilities for Path of Exile 2 players. Currently features a weapon DPS calculator for theorycrafting builds, with item valuation planned for the future. Built with TypeScript and deployed via GitHub Pages.",
+		tags: ["TypeScript", "React", "Parcel", "GitHub Pages"],
+		category: "tools",
+		status: "live",
+		repoUrl: "https://github.com/The-Adult-In-The-Room/poe2-tools",
+		liveUrl: "https://the-adult-in-the-room.github.io/poe2-tools/",
+		year: "2025",
+	},
+	{
+		title: "Bap Heads",
+		description:
+			"Community website for the Bap Heads Old School RuneScape clan, built with React and deployed to GitHub Pages.",
+		longDescription:
+			"A clan website for the Bap Heads OSRS community. Built with React and Parcel, featuring CI/CD via GitHub Actions with automated linting, testing, and deployment. Includes pre-commit hooks with Husky for code quality.",
+		tags: ["JavaScript", "React", "Parcel", "GitHub Actions", "Jest"],
+		category: "frontend",
+		status: "live",
+		repoUrl: "https://github.com/The-Adult-In-The-Room/bap-heads",
+		liveUrl: "https://bapheads.com",
+		year: "2022",
+	},
+	{
+		title: "VG Web",
+		description:
+			"A gaming news and information site built with React, displaying game releases, news, and popular titles from the IGDB API.",
+		longDescription:
+			"The frontend for a full-stack gaming platform. Built with React and Parcel, it uses React Router for navigation and React Query for data fetching. Displays video game news, new releases, popular titles, and upcoming games powered by the IGDB API.",
+		tags: ["JavaScript", "React", "React Router", "React Query", "SCSS"],
+		category: "frontend",
+		status: "live",
+		repoUrl: "https://github.com/Two-Boys-and-a-Dream/vg-web",
+		year: "2022",
+	},
+	{
+		title: "VG API",
+		description:
+			"Express/Node.js REST API that interfaces with the IGDB (International Game Data Base) API for gaming data.",
+		longDescription:
+			"The backend service for the VG gaming platform. Built with Express and Node.js, it proxies requests to the IGDB and RapidAPI services, providing a clean REST interface for the frontend. Deployed on Railway with environment-based configuration.",
+		tags: ["JavaScript", "Node.js", "Express", "IGDB API", "Railway"],
 		category: "backend",
 		status: "live",
-		repoUrl: "https://github.com",
-		year: "2024",
-	},
-	{
-		title: "Pixelcraft",
-		description:
-			"Image optimization pipeline that compresses, resizes, and converts images for the web.",
-		longDescription:
-			"A blazing-fast image processing tool that handles batch optimization, format conversion (WebP, AVIF), and responsive image generation. Uses Rust and WebAssembly for near-native performance in the browser.",
-		tags: ["Rust", "WebAssembly", "Sharp", "Node.js"],
-		category: "tools",
-		status: "live",
-		repoUrl: "https://github.com",
-		year: "2023",
-	},
-	{
-		title: "Notecraft",
-		description:
-			"A minimal markdown note-taking app with real-time sync and offline support.",
-		longDescription:
-			"A distraction-free writing environment that supports markdown, real-time collaboration via CRDTs, and works offline with automatic sync when reconnected. Features local-first architecture.",
-		tags: ["React", "TypeScript", "Yjs", "IndexedDB", "Tailwind CSS"],
-		category: "frontend",
-		status: "wip",
-		repoUrl: "https://github.com",
-		year: "2024",
-	},
-	{
-		title: "Terraviz",
-		description:
-			"Interactive data visualization library for geospatial and time-series datasets.",
-		longDescription:
-			"A composable charting library built on D3 and WebGL that specializes in geographic maps and time-series data. Supports streaming data, animations, and responsive layouts out of the box.",
-		tags: ["TypeScript", "D3.js", "WebGL", "Canvas"],
-		category: "frontend",
-		status: "live",
-		repoUrl: "https://github.com",
-		liveUrl: "https://example.com",
-		year: "2023",
-	},
-	{
-		title: "CLI Forge",
-		description:
-			"A CLI framework for building beautiful, interactive command-line tools with minimal boilerplate.",
-		longDescription:
-			"An opinionated framework for building CLIs that look great and feel intuitive. Includes built-in argument parsing, progress indicators, spinners, prompts, and table formatting with full TypeScript support.",
-		tags: ["TypeScript", "Node.js", "Inquirer", "Chalk"],
-		category: "tools",
-		status: "archived",
-		repoUrl: "https://github.com",
+		repoUrl: "https://github.com/Two-Boys-and-a-Dream/vg-api",
 		year: "2022",
 	},
 ];

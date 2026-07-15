@@ -79,7 +79,7 @@ function About() {
 						<div className="flex flex-wrap gap-2">
 							<Badge variant="accent">
 								<MapPin size={12} />
-								San Francisco, CA
+								Detroit, MI
 							</Badge>
 							<Badge variant="default">
 								<Briefcase size={12} />

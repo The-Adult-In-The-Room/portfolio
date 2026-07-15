@@ -15,24 +15,24 @@ export const Route = createFileRoute("/")({ component: Home });
 
 const featuredProjects = [
 	{
-		title: "DevFlow",
+		title: "Lorebrary",
 		description:
-			"A developer productivity dashboard that aggregates GitHub activity, CI/CD status, and deployment metrics in one place.",
-		tags: ["React", "TypeScript", "Node.js"],
+			"A lore and reference library built with TanStack Start, featuring SSR, type-safe routing, and a polished UI.",
+		tags: ["TypeScript", "TanStack Start", "Tailwind CSS", "Drizzle"],
 		href: "/projects",
 	},
 	{
-		title: "Pulse API",
+		title: "POE2 Tools",
 		description:
-			"Real-time health monitoring API with webhook integrations, alerting, and a beautiful status page generator.",
-		tags: ["Go", "PostgreSQL", "Redis"],
+			"A suite of tools for Path of Exile 2, including a weapon DPS calculator for theorycrafting builds.",
+		tags: ["TypeScript", "React", "Parcel"],
 		href: "/projects",
 	},
 	{
-		title: "Pixelcraft",
+		title: "VG Web & API",
 		description:
-			"An image optimization pipeline that automatically compresses, resizes, and converts images for the web.",
-		tags: ["Rust", "WebAssembly", "Sharp"],
+			"A full-stack gaming platform with a React frontend and Express/Node.js API interfacing with the IGDB API.",
+		tags: ["JavaScript", "React", "Node.js", "Express"],
 		href: "/projects",
 	},
 ];
