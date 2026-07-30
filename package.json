@@ -26,7 +26,7 @@
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "latest",
     "@tanstack/router-plugin": "^1.168.20",
-    "lucide-react": "^1.27.0",
+    "lucide-react": "^1.28.0",
     "nitro": "npm:nitro-nightly@latest",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
