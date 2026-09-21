@@ -4,6 +4,7 @@ dist
 dist-ssr
 *.local
 .env
+.env.development
 .nitro
 .tanstack
 .wrangler
@@ -11,3 +12,7 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+coverage
+test-results
+playwright-report
+playwright/.cache

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type ThemeMode = "light" | "dark" | "auto";
 
-function getInitialMode(): ThemeMode {
+export function getInitialMode(): ThemeMode {
 	if (typeof window === "undefined") {
 		return "auto";
 	}
