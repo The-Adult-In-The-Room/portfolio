@@ -5,38 +5,51 @@ on:
     branches: [main]
 
 jobs:
-  lighthouse:
+  lhci:
+    name: Lighthouse
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
-      - name: Install Chromium for Lighthouse
+      - name: build
+        run: npm run build
+      - name: run Lighthouse CI
         run: |
-          npx playwright install chromium
-          chrome_path=$(node -e "const { chromium } = require('@playwright/test'); console.log(chromium.executablePath());" 2>/dev/null)
-          echo "CHROME_PATH=$chrome_path" >> "$GITHUB_ENV"
-      - run: npm run build
-      - name: Lighthouse mobile audit
-        run: npm run lighthouse:mobile
-        env:
-          CHROME_PATH: ${{ env.CHROME_PATH }}
-      - name: Lighthouse desktop audit
-        run: npm run lighthouse:desktop
-        env:
-          CHROME_PATH: ${{ env.CHROME_PATH }}
-      - name: Generate Lighthouse summary
-        if: always()
-        run: node .github/scripts/lighthouse-summary.js
-      - name: List Lighthouse output
-        if: always()
-        run: find .lighthouseci -type f | sort || true
-      - uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: lighthouse-reports
-          path: |
-            .lighthouseci/**/manifest.json
-            .lighthouseci/**/lhr-*.html
-          retention-days: 7
-          if-no-files-found: warn
-          include-hidden-files: true
+          npm install -g @lhci/cli@0.15.x
+          lhci autorun
+
+# jobs:
+#   lighthouse:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v7
+#       - uses: ./.github/actions/setup
+#       - name: Install Chromium for Lighthouse
+#         run: |
+#           npx playwright install chromium
+#           chrome_path=$(node -e "const { chromium } = require('@playwright/test'); console.log(chromium.executablePath());" 2>/dev/null)
+#           echo "CHROME_PATH=$chrome_path" >> "$GITHUB_ENV"
+#       - run: npm run build
+#       - name: Lighthouse mobile audit
+#         run: npm run lighthouse:mobile
+#         env:
+#           CHROME_PATH: ${{ env.CHROME_PATH }}
+#       - name: Lighthouse desktop audit
+#         run: npm run lighthouse:desktop
+#         env:
+#           CHROME_PATH: ${{ env.CHROME_PATH }}
+#       - name: Generate Lighthouse summary
+#         if: always()
+#         run: node .github/scripts/lighthouse-summary.js
+#       - name: List Lighthouse output
+#         if: always()
+#         run: find .lighthouseci -type f | sort || true
+#       - uses: actions/upload-artifact@v7
+#         if: always()
+#         with:
+#           name: lighthouse-reports
+#           path: |
+#             .lighthouseci/**/manifest.json
+#             .lighthouseci/**/lhr-*.html
+#           retention-days: 7
+#           if-no-files-found: warn
+#           include-hidden-files: true
