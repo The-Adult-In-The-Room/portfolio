@@ -29,5 +29,5 @@ ci:
         - error
         - minScore: 0.9
   upload:
-    target: filesystem
+    target: temporary-public-storage
     outputDir: ./.lighthouseci/mobile
