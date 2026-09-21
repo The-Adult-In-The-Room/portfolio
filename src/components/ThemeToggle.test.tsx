@@ -92,7 +92,6 @@ describe("GIVEN the ThemeToggle component", () => {
 describe("GIVEN getInitialMode in a server environment", () => {
 	test("THEN it returns auto when window is undefined", async () => {
 		const originalWindow = window;
-		// @ts-expect-error simulating a server environment where window is undefined
 		vi.stubGlobal("window", undefined);
 
 		const { getInitialMode } = await import("./ThemeToggle");

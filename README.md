@@ -32,7 +32,7 @@ This project follows **Acceptance Test Driven Development (ATDD)** and **Behavio
 | Acceptance | Playwright | Full happy paths: navigation, theme toggle, project filtering | `npm run test:e2e:acceptance` |
 | Smoke | Playwright | App loads, pages render, no runtime errors | `npm run test:e2e:smoke` |
 
-Unit tests run with `happy-dom` and enforce reasonable coverage thresholds on the included source tree. Playwright suites build the app and run against the production preview server.
+Unit tests run with `happy-dom` and enforce 95% coverage thresholds on the included source tree. Playwright suites build the app and run against the production preview server.
 
 ### Page Object Model
 
