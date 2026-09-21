@@ -110,7 +110,7 @@ function Home() {
 					{featuredProjects.map((project, index) => (
 						<Card
 							key={project.title}
-							className="rise-in transition-all hover:-translate-y-1"
+							className="rise-in transition-transform hover:-translate-y-1"
 							style={{ animationDelay: `${index * 100 + 200}ms` }}
 						>
 							<CardHeader>
