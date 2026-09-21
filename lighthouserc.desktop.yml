@@ -31,4 +31,4 @@ ci:
         - minScore: 0.9
   upload:
     target: filesystem
-    outputDir: ./.lighthouseci
+    outputDir: ./.lighthouseci/desktop
