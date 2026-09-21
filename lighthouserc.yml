@@ -8,6 +8,7 @@ ci:
       - http://localhost:3000/about
       - http://localhost:3000/projects
     settings:
+      chromeFlags: "--no-sandbox --disable-setuid-sandbox"
       onlyCategories:
         - performance
         - accessibility

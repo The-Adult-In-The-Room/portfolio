@@ -14,13 +14,24 @@ jobs:
         shell: bash
       - name: Set CHROME_PATH
         run: |
-          chrome_path=$(find ~/.cache/ms-playwright -name chrome -type f | head -n 1)
+          chrome_path=$(node -e "const { chromium } = require('@playwright/test'); console.log(chromium.executablePath());" 2>/dev/null)
+          if [ -z "$chrome_path" ]; then
+            echo "Could not resolve Playwright Chromium executable path"
+            exit 1
+          fi
+          if [ ! -x "$chrome_path" ]; then
+            echo "Chromium binary not executable: $chrome_path"
+            exit 1
+          fi
+          echo "CHROME_PATH=$chrome_path"
           echo "CHROME_PATH=$chrome_path" >> "$GITHUB_ENV"
       - run: npm run build
-      - run: npm run lighthouse:mobile
+      - name: Lighthouse mobile audit
+        run: npm run lighthouse:mobile
         env:
           CHROME_PATH: ${{ env.CHROME_PATH }}
-      - run: npm run lighthouse:desktop
+      - name: Lighthouse desktop audit
+        run: npm run lighthouse:desktop
         env:
           CHROME_PATH: ${{ env.CHROME_PATH }}
       - name: List Lighthouse output
@@ -32,3 +43,4 @@ jobs:
           name: lighthouse-reports
           path: .lighthouseci
           retention-days: 7
+          if-no-files-found: warn

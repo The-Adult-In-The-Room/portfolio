@@ -9,6 +9,7 @@ ci:
       - http://localhost:3000/projects
     settings:
       preset: desktop
+      chromeFlags: "--no-sandbox --disable-setuid-sandbox"
       onlyCategories:
         - performance
         - accessibility
