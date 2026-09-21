@@ -31,8 +31,30 @@ This project follows **Acceptance Test Driven Development (ATDD)** and **Behavio
 | Unit | Vitest + React Testing Library | Components, utilities, UI variants | `npm run test:ci` |
 | Acceptance | Playwright | Full happy paths: navigation, theme toggle, project filtering | `npm run test:e2e:acceptance` |
 | Smoke | Playwright | App loads, pages render, no runtime errors | `npm run test:e2e:smoke` |
+| Lighthouse | Lighthouse CI | Performance, accessibility, best practices, SEO | `npm run lighthouse` |
 
 Unit tests run with `happy-dom` and enforce 95% coverage thresholds on the included source tree. Playwright suites build the app and run against the production preview server.
+
+### Lighthouse Audits
+
+Lighthouse CI audits the production build for every route. The default run checks mobile emulation; desktop emulation is also available.
+
+```bash
+npm run lighthouse              # Build and audit mobile + desktop
+npm run lighthouse:mobile       # Audit mobile only
+npm run lighthouse:desktop      # Audit desktop only
+```
+
+Minimum category thresholds are defined in `lighthouserc.yml` (mobile) and `lighthouserc.desktop.yml`:
+
+| Category | Mobile | Desktop |
+| --- | --- | --- |
+| Performance | 0.70 | 0.95 |
+| Accessibility | 0.95 | 0.95 |
+| Best Practices | 0.95 | 0.95 |
+| SEO | 0.90 | 0.90 |
+
+A local Chrome or Chromium installation is required. Reports are written to `.lighthouseci/`.
 
 ### Page Object Model
 
