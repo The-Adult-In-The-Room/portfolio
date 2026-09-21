@@ -1,65 +1,97 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "engines": {
-    "node": ">=24"
-  },
-  "imports": {
-    "#/*": "./src/*"
-  },
-  "scripts": {
-    "dev": "vite dev --port 3000",
-    "generate-routes": "tsr generate",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest run --passWithNoTests",
-    "start": "node .output/server/index.mjs",
-    "verify": "npx tsc && biome ci && npm run test",
-    "fix": "biome check --write"
-  },
-  "dependencies": {
-    "@radix-ui/react-separator": "^1.1.15",
-    "@radix-ui/react-slot": "^1.3.3",
-    "@radix-ui/react-tabs": "^1.1.21",
-    "@tailwindcss/vite": "^4.3.3",
-    "@tanstack/react-devtools": "^0.10.12",
-    "@tanstack/react-router": "^1.170.38",
-    "@tanstack/react-router-devtools": "^1.167.2",
-    "@tanstack/router-core": "^1.171.32",
-    "@tanstack/react-router-ssr-query": "^1.167.3",
-    "@tanstack/react-start": "^1.168.56",
-    "@tanstack/router-plugin": "^1.168.40",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^1.47.0",
-    "nitro": "npm:nitro-nightly@latest",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "tailwind-merge": "^3.7.0",
-    "tailwindcss": "^4.3.2"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.5.14",
-    "@tailwindcss/typography": "^0.5.20",
-    "@tanstack/devtools-vite": "^0.8.5",
-    "@tanstack/router-cli": "^1.167.38",
-    "@testing-library/dom": "^10.4.2",
-    "@testing-library/react": "^16.3.3",
-    "@types/node": "^26.6.1",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.1",
-    "jsdom": "^30.1.0",
-    "typescript": "^7.0.2",
-    "vite": "^8.3.0",
-    "vitest": "^5.0.1"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lightningcss"
-    ]
-  }
+	"name": "portfolio",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"description": "Personal portfolio site built with TanStack Start",
+	"engines": {
+		"node": ">=24"
+	},
+	"imports": {
+		"#/*": "./src/*"
+	},
+	"scripts": {
+		"dev": "vite dev --port 3000",
+		"generate-routes": "tsr generate",
+		"build": "vite build",
+		"preview": "vite preview",
+		"start": "node .output/server/index.mjs",
+		"test": "vitest --coverage",
+		"test:ci": "vitest run",
+		"test:e2e:smoke": "npm run build && playwright test --project=smoke",
+		"test:e2e:acceptance": "npm run build && playwright test --project=acceptance",
+		"test:e2e:acceptance:gui": "npm run build && playwright test --project=acceptance --ui",
+		"lint": "biome ci",
+		"fix": "biome check --write",
+		"prepare": "simple-git-hooks",
+		"ts:check": "tsc",
+		"verify": "tsc && biome ci && npm run test:ci"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/The-Adult-In-The-Room/portfolio.git"
+	},
+	"keywords": [
+		"React",
+		"TypeScript",
+		"TanStack Start",
+		"Portfolio"
+	],
+	"author": "Raymond Cox",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/The-Adult-In-The-Room/portfolio/issues"
+	},
+	"homepage": "https://github.com/The-Adult-In-The-Room/portfolio#readme",
+	"dependencies": {
+		"@radix-ui/react-separator": "^1.1.15",
+		"@radix-ui/react-slot": "^1.3.3",
+		"@radix-ui/react-tabs": "^1.1.21",
+		"@tailwindcss/vite": "^4.3.3",
+		"@tanstack/react-devtools": "^0.10.12",
+		"@tanstack/react-router": "^1.170.38",
+		"@tanstack/react-router-devtools": "^1.167.2",
+		"@tanstack/react-router-ssr-query": "^1.167.3",
+		"@tanstack/react-start": "^1.168.56",
+		"@tanstack/router-plugin": "^1.168.40",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"lucide-react": "^1.47.0",
+		"nitro": "npm:nitro-nightly@latest",
+		"react": "^19.3.0",
+		"react-dom": "^19.3.0",
+		"tailwind-merge": "^3.7.0",
+		"tailwindcss": "^4.3.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.14",
+		"@playwright/test": "^1.63.0",
+		"@tailwindcss/typography": "^0.5.20",
+		"@tanstack/devtools-vite": "^0.8.5",
+		"@tanstack/router-cli": "^1.167.38",
+		"@testing-library/dom": "^10.4.2",
+		"@testing-library/jest-dom": "^7.0.1",
+		"@testing-library/react": "^16.3.3",
+		"@testing-library/user-event": "^14.6.7",
+		"@types/node": "^26.6.1",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"@vitejs/plugin-react": "^6.1.1",
+		"@vitest/coverage-v8": "^5.0.1",
+		"happy-dom": "^20.14.5",
+		"lint-staged": "^17.5.1",
+		"simple-git-hooks": "^2.14.0",
+		"typescript": "^7.0.2",
+		"vite": "^8.3.0",
+		"vitest": "^5.0.1"
+	},
+	"lint-staged": {
+		"*": "biome check --write --no-errors-on-unmatched"
+	},
+	"simple-git-hooks": {
+		"pre-commit": "npx lint-staged"
+	},
+	"allowScripts": {
+		"simple-git-hooks@2.14.0": true
+	}
 }
