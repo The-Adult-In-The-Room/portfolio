@@ -8,4 +8,5 @@ jobs:
   lhci:
     name: CI
     uses: The-Adult-In-The-Room/ci-workflows/.github/workflows/lighthouse.yml@main
-    secrets: inherit
+    secrets:
+      lhci-github-app-token: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
