@@ -68,6 +68,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.14",
+		"@lightpanda/browser": "^1.6.0",
 		"@lhci/cli": "^0.15.1",
 		"@playwright/test": "^1.63.0",
 		"@tailwindcss/typography": "^0.5.20",
@@ -96,6 +97,7 @@
 		"pre-commit": "npx lint-staged"
 	},
 	"allowScripts": {
+		"@lightpanda/browser@1.6.0": true,
 		"simple-git-hooks@2.14.0": true
 	}
 }
