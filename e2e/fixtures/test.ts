@@ -1,9 +1,10 @@
-import { test as base } from "@playwright/test";
+import { test as base, chromium } from "@playwright/test";
 import { AboutPage } from "../pages/AboutPage";
 import { HomePage } from "../pages/HomePage";
 import { Navigation } from "../pages/Navigation";
 import { ProjectsPage } from "../pages/ProjectsPage";
 import { ThemeToggle } from "../pages/ThemeToggle";
+import { LIGHTPANDA_WS_ENDPOINT } from "./lightpanda";
 
 export const test = base.extend<{
 	homePage: HomePage;
@@ -12,6 +13,15 @@ export const test = base.extend<{
 	navigation: Navigation;
 	themeToggle: ThemeToggle;
 }>({
+	browser: async (
+		// biome-ignore lint/correctness/noEmptyPattern: Playwright fixture signature requires object destructuring.
+		{},
+		use,
+	) => {
+		const browser = await chromium.connectOverCDP(LIGHTPANDA_WS_ENDPOINT);
+		await use(browser);
+		await browser.close();
+	},
 	homePage: async ({ page }, use) => {
 		await use(new HomePage(page));
 	},
