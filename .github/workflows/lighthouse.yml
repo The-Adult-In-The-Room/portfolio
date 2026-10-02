@@ -7,6 +7,6 @@ on:
 jobs:
   lhci:
     name: CI
-    uses: The-Adult-In-The-Room/ci-workflows/.github/workflows/lighthouse.yml@main
+    uses: The-Adult-In-The-Room/ci-workflows/.github/workflows/lighthouse.yml@v1.0.0
     secrets:
       lhci-github-app-token: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
