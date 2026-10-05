@@ -1,0 +1,14 @@
+name: Scheduled Regression Tests
+
+on:
+  schedule:
+    - cron: "0 8,20 * * *"
+  workflow_dispatch:
+
+jobs:
+  regression:
+    name: CI
+    uses: The-Adult-In-The-Room/ci-workflows/.github/workflows/regression.yml@v2.0.0
+    with:
+      base-url: ${{ vars.REGRESSION_BASE_URL }}
+      base-url-required: true
