@@ -21,6 +21,7 @@
 		"test:e2e:smoke": "npm run build && playwright test --project=smoke",
 		"test:e2e:acceptance": "npm run build && playwright test --project=acceptance",
 		"test:e2e:acceptance:gui": "npm run build && playwright test --project=acceptance --ui",
+		"test:e2e:regression": "playwright test --project=regression",
 		"lighthouse:mobile": "lhci autorun --config=lighthouserc.yml",
 		"lighthouse:desktop": "lhci autorun --config=lighthouserc.desktop.yml",
 		"lighthouse": "npm run build && npm run lighthouse:mobile && npm run lighthouse:desktop",

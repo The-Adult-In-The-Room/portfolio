@@ -27,6 +27,13 @@ export default defineConfig({
 			name: "acceptance",
 			testDir: "./e2e/acceptance",
 		},
+		{
+			name: "regression",
+			testDir: "./e2e/regression",
+			use: {
+				baseURL: process.env.REGRESSION_BASE_URL || "",
+			},
+		},
 	],
 	webServer: {
 		command: "npm run preview",
