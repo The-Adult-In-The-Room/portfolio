@@ -1,7 +1,10 @@
 import { defineConfig } from "@playwright/test";
 
-const PORT = Number(process.env.PORT || 3000);
-const BASE_URL = `http://localhost:${PORT}`;
+const BASE_URL = process.env.REGRESSION_BASE_URL;
+
+if (!BASE_URL) {
+	throw new Error("REGRESSION_BASE_URL must be set to run regression tests.");
+}
 
 export default defineConfig({
 	fullyParallel: true,
@@ -16,23 +19,12 @@ export default defineConfig({
 		trace: "on-first-retry",
 	},
 	expect: {
-		timeout: 5000,
+		timeout: 10000,
 	},
 	projects: [
 		{
-			name: "smoke",
-			testDir: "./e2e/smoke",
-		},
-		{
-			name: "acceptance",
-			testDir: "./e2e/acceptance",
+			name: "regression",
+			testDir: "./e2e/regression",
 		},
 	],
-	webServer: {
-		command: "npm run preview",
-		url: BASE_URL,
-		reuseExistingServer: false,
-		stdout: "pipe",
-		stderr: "ignore",
-	},
 });
