@@ -4,9 +4,9 @@ export const projects: Project[] = [
 	{
 		title: "Blog",
 		description:
-			"A barebones blog built with TanStack Start, React, and Tailwind CSS.",
+			"A content-focused blog with Markdown-driven posts, frontmatter support, and a full test pyramid.",
 		longDescription:
-			"Markdown-driven posts with frontmatter support, sorted by date and title. Built on TanStack Start with acceptance, smoke, and regression e2e coverage.",
+			"Posts are sorted by date and title, with draft support for previewing content in development. The fully pre-rendered site scores 100 on Lighthouse performance and is validated through unit, acceptance, smoke, and regression test layers.",
 		tags: ["TypeScript", "TanStack Start", "React", "Tailwind CSS"],
 		category: "fullstack",
 		status: "live",
@@ -17,9 +17,9 @@ export const projects: Project[] = [
 	{
 		title: "CI Workflows",
 		description:
-			"Reusable GitHub workflows and composite actions shared across personal projects.",
+			"Reusable GitHub workflows and composite actions for verifying, deploying, and monitoring personal projects.",
 		longDescription:
-			"Includes PR verify, deploy-and-smoke, regression, and Lighthouse workflows plus a contract checker and a canary system that tests reusable workflow changes in the blog repo before release.",
+			"Includes PR verify, deploy-and-smoke, regression, and Lighthouse workflow. Internal mechanics include a contract checker and a canary system that tests reusable workflow changes in the blog repo before broad release to other consumers.",
 		tags: ["GitHub Actions", "CI/CD", "Node.js"],
 		category: "tools",
 		status: "live",
@@ -29,8 +29,9 @@ export const projects: Project[] = [
 	{
 		title: "POE2 Tools",
 		description:
-			"A browser-based toolkit for Path of Exile 2 players. Evaluate weapon damage and track live currency market rates without leaving the site.",
-		longDescription: "Planned features: item market valuation.",
+			"A browser-based toolkit for Path of Exile 2 players. Evaluate weapon damage and track live currency market rates.",
+		longDescription:
+			"Includes a weapon DPS calculator and live currency market rates from poe.ninja. Runs unit, acceptance, smoke, and regression test suites against mocked and live data.",
 		tags: ["TypeScript", "React", "Tanstack Start", "Railway"],
 		category: "fullstack",
 		status: "live",

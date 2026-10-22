@@ -38,7 +38,7 @@ function Projects() {
 				<p className="m-0 max-w-3xl text-base leading-8 text-[var(--sea-ink-soft)]">
 					A selection of things I've built — from full-stack apps to developer
 					tools. Each project reflects my focus on clean architecture,
-					performance, and user experience.
+					performance, automation, and user experience.
 				</p>
 			</section>
 
