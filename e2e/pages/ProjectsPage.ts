@@ -11,18 +11,6 @@ export class ProjectsPage {
 		return this.page.getByRole("heading", { name: "Projects" });
 	}
 
-	get tabList() {
-		return this.page.getByRole("tablist");
-	}
-
-	getTab(name: string) {
-		return this.page.getByRole("tab", { name });
-	}
-
-	async filterByCategory(category: string) {
-		await this.getTab(category).click();
-	}
-
 	get projectCards() {
 		return this.page.locator("[data-slot='card']");
 	}

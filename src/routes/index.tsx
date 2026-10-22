@@ -6,36 +6,12 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "#/components/ui/card";
+import { projects } from "#/constants/projects";
 
 export const Route = createFileRoute("/")({ component: Home });
-
-const featuredProjects = [
-	{
-		title: "Lorebrary",
-		description:
-			"A lore and reference library built with TanStack Start, featuring SSR, type-safe routing, and a polished UI.",
-		tags: ["TypeScript", "TanStack Start", "Tailwind CSS", "Drizzle"],
-		href: "/projects",
-	},
-	{
-		title: "POE2 Tools",
-		description:
-			"A suite of tools for Path of Exile 2, including a weapon DPS calculator for theorycrafting builds.",
-		tags: ["TypeScript", "React", "Parcel"],
-		href: "/projects",
-	},
-	{
-		title: "VG Web & API",
-		description:
-			"A full-stack gaming platform with a React frontend and Express/Node.js API interfacing with the IGDB API.",
-		tags: ["JavaScript", "React", "Node.js", "Express"],
-		href: "/projects",
-	},
-];
 
 const stats = [
 	{ label: "Years Experience", value: "8+" },
@@ -107,7 +83,7 @@ function Home() {
 					</Button>
 				</div>
 				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{featuredProjects.map((project, index) => (
+					{projects.slice(0, 3).map((project, index) => (
 						<Card
 							key={project.title}
 							className="rise-in transition-transform hover:-translate-y-1"
@@ -126,14 +102,6 @@ function Home() {
 									))}
 								</div>
 							</CardContent>
-							<CardFooter>
-								<Button asChild variant="ghost" size="sm" className="ml-auto">
-									<Link to={project.href}>
-										Learn more
-										<ArrowRight size={14} />
-									</Link>
-								</Button>
-							</CardFooter>
 						</Card>
 					))}
 				</div>

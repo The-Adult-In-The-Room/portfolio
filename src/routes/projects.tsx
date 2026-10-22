@@ -13,100 +13,10 @@ import {
 	CardTitle,
 } from "#/components/ui/card";
 import { Separator } from "#/components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "#/components/ui/tabs";
+import { projects } from "#/constants/projects";
+import type { Project } from "#/types/project";
 
 export const Route = createFileRoute("/projects")({ component: Projects });
-
-type Project = {
-	title: string;
-	description: string;
-	longDescription: string;
-	tags: string[];
-	category: "frontend" | "backend" | "fullstack" | "tools";
-	status: "live" | "wip" | "archived";
-	repoUrl?: string;
-	liveUrl?: string;
-	year: string;
-};
-
-const projects: Project[] = [
-	{
-		title: "Lorebrary",
-		description:
-			"A lore and reference library built with TanStack Start, featuring SSR, type-safe routing, and a polished UI.",
-		longDescription:
-			"A full-stack web application built on TanStack Start with Tailwind CSS and Shadcn UI. Features server-side rendering, type-safe data fetching with Drizzle ORM, and a clean component architecture.",
-		tags: [
-			"TypeScript",
-			"TanStack Start",
-			"Tailwind CSS",
-			"Shadcn UI",
-			"Drizzle",
-		],
-		category: "fullstack",
-		status: "live",
-		repoUrl: "https://github.com/The-Adult-In-The-Room/Lorebrary-start",
-		liveUrl: "https://182350.up.railway.app",
-		year: "2025",
-	},
-	{
-		title: "POE2 Tools",
-		description:
-			"A suite of tools for Path of Exile 2, including a weapon DPS calculator for theorycrafting builds.",
-		longDescription:
-			"A collection of utilities for Path of Exile 2 players. Currently features a weapon DPS calculator for theorycrafting builds, with item valuation planned for the future. Built with TypeScript and deployed via GitHub Pages.",
-		tags: ["TypeScript", "React", "Parcel", "GitHub Pages"],
-		category: "tools",
-		status: "live",
-		repoUrl: "https://github.com/The-Adult-In-The-Room/poe2-tools",
-		liveUrl: "https://the-adult-in-the-room.github.io/poe2-tools/",
-		year: "2025",
-	},
-	{
-		title: "Bap Heads",
-		description:
-			"Community website for the Bap Heads Old School RuneScape clan, built with React and deployed to GitHub Pages.",
-		longDescription:
-			"A clan website for the Bap Heads OSRS community. Built with React and Parcel, featuring CI/CD via GitHub Actions with automated linting, testing, and deployment. Includes pre-commit hooks with Husky for code quality.",
-		tags: ["JavaScript", "React", "Parcel", "GitHub Actions", "Jest"],
-		category: "frontend",
-		status: "live",
-		repoUrl: "https://github.com/The-Adult-In-The-Room/bap-heads",
-		liveUrl: "https://bapheads.com",
-		year: "2022",
-	},
-	{
-		title: "VG Web",
-		description:
-			"A gaming news and information site built with React, displaying game releases, news, and popular titles from the IGDB API.",
-		longDescription:
-			"The frontend for a full-stack gaming platform. Built with React and Parcel, it uses React Router for navigation and React Query for data fetching. Displays video game news, new releases, popular titles, and upcoming games powered by the IGDB API.",
-		tags: ["JavaScript", "React", "React Router", "React Query", "SCSS"],
-		category: "frontend",
-		status: "live",
-		repoUrl: "https://github.com/Two-Boys-and-a-Dream/vg-web",
-		year: "2022",
-	},
-	{
-		title: "VG API",
-		description:
-			"Express/Node.js REST API that interfaces with the IGDB (International Game Data Base) API for gaming data.",
-		longDescription:
-			"The backend service for the VG gaming platform. Built with Express and Node.js, it proxies requests to the IGDB and RapidAPI services, providing a clean REST interface for the frontend. Deployed on Railway with environment-based configuration.",
-		tags: ["JavaScript", "Node.js", "Express", "IGDB API", "Railway"],
-		category: "backend",
-		status: "live",
-		repoUrl: "https://github.com/Two-Boys-and-a-Dream/vg-api",
-		year: "2022",
-	},
-];
-
-const categoryLabels: Record<Project["category"], string> = {
-	frontend: "Frontend",
-	backend: "Backend",
-	fullstack: "Full Stack",
-	tools: "Tools & Libraries",
-};
 
 const statusVariant: Record<
 	Project["status"],
@@ -133,39 +43,7 @@ function Projects() {
 			</section>
 
 			<section className="mt-8">
-				<Tabs defaultValue="all">
-					<TabsList>
-						<TabsTrigger value="all">All</TabsTrigger>
-						<TabsTrigger value="fullstack">Full Stack</TabsTrigger>
-						<TabsTrigger value="frontend">Frontend</TabsTrigger>
-						<TabsTrigger value="backend">Backend</TabsTrigger>
-						<TabsTrigger value="tools">Tools</TabsTrigger>
-					</TabsList>
-
-					<TabsContent value="all">
-						<ProjectGrid projects={projects} />
-					</TabsContent>
-					<TabsContent value="fullstack">
-						<ProjectGrid
-							projects={projects.filter((p) => p.category === "fullstack")}
-						/>
-					</TabsContent>
-					<TabsContent value="frontend">
-						<ProjectGrid
-							projects={projects.filter((p) => p.category === "frontend")}
-						/>
-					</TabsContent>
-					<TabsContent value="backend">
-						<ProjectGrid
-							projects={projects.filter((p) => p.category === "backend")}
-						/>
-					</TabsContent>
-					<TabsContent value="tools">
-						<ProjectGrid
-							projects={projects.filter((p) => p.category === "tools")}
-						/>
-					</TabsContent>
-				</Tabs>
+				<ProjectGrid projects={projects} />
 			</section>
 		</main>
 	);
@@ -227,12 +105,6 @@ function ProjectGrid({ projects }: { projects: Project[] }) {
 								</a>
 							</Button>
 						)}
-						<Badge
-							variant="default"
-							className="ml-auto text-[var(--sea-ink-soft)]"
-						>
-							{categoryLabels[project.category]}
-						</Badge>
 					</CardFooter>
 				</Card>
 			))}
