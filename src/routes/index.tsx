@@ -1,46 +1,69 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Code2, Sparkles, Zap } from "lucide-react";
+import {
+	ArrowRight,
+	Cloud,
+	Code2,
+	Database,
+	Layers,
+	Network,
+	Shield,
+	Sparkles,
+	Workflow,
+	Zap,
+} from "lucide-react";
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
 import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "#/components/ui/card";
+import { projects } from "#/constants/projects";
 
 export const Route = createFileRoute("/")({ component: Home });
-
-const featuredProjects = [
-	{
-		title: "Lorebrary",
-		description:
-			"A lore and reference library built with TanStack Start, featuring SSR, type-safe routing, and a polished UI.",
-		tags: ["TypeScript", "TanStack Start", "Tailwind CSS", "Drizzle"],
-		href: "/projects",
-	},
-	{
-		title: "POE2 Tools",
-		description:
-			"A suite of tools for Path of Exile 2, including a weapon DPS calculator for theorycrafting builds.",
-		tags: ["TypeScript", "React", "Parcel"],
-		href: "/projects",
-	},
-	{
-		title: "VG Web & API",
-		description:
-			"A full-stack gaming platform with a React frontend and Express/Node.js API interfacing with the IGDB API.",
-		tags: ["JavaScript", "React", "Node.js", "Express"],
-		href: "/projects",
-	},
-];
 
 const stats = [
 	{ label: "Years Experience", value: "8+" },
 	{ label: "Projects Shipped", value: "20+" },
 	{ label: "Open Source Contributions", value: "10+" },
+];
+
+const systemDesignSkills = [
+	{
+		title: "Distributed Systems",
+		description:
+			"Designing resilient, scalable services that communicate reliably.",
+		icon: Network,
+	},
+	{
+		title: "Data Modeling",
+		description: "Database design, caching strategies, and query optimization.",
+		icon: Database,
+	},
+	{
+		title: "Cloud Architecture",
+		description: "AWS, Railway, serverless, and containerized deployments.",
+		icon: Cloud,
+	},
+	{
+		title: "CI/CD & Automation",
+		description:
+			"Automated testing, deployment pipelines, and rollback strategies.",
+		icon: Workflow,
+	},
+	{
+		title: "System Architecture",
+		description:
+			"Layered architecture, microservices, and event-driven design.",
+		icon: Layers,
+	},
+	{
+		title: "Reliability & Security",
+		description: "Monitoring, observability, and defensive coding practices.",
+		icon: Shield,
+	},
 ];
 
 function Home() {
@@ -107,7 +130,7 @@ function Home() {
 					</Button>
 				</div>
 				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{featuredProjects.map((project, index) => (
+					{projects.slice(0, 3).map((project, index) => (
 						<Card
 							key={project.title}
 							className="rise-in transition-transform hover:-translate-y-1"
@@ -126,15 +149,41 @@ function Home() {
 									))}
 								</div>
 							</CardContent>
-							<CardFooter>
-								<Button asChild variant="ghost" size="sm" className="ml-auto">
-									<Link to={project.href}>
-										Learn more
-										<ArrowRight size={14} />
-									</Link>
-								</Button>
-							</CardFooter>
 						</Card>
+					))}
+				</div>
+			</section>
+
+			<section className="mt-12">
+				<div className="mb-6">
+					<p className="island-kicker mb-1">Capabilities</p>
+					<h2 className="display-title m-0 text-2xl font-bold text-[var(--sea-ink)] sm:text-3xl">
+						System Design & Architecture
+					</h2>
+					<p className="m-0 mt-2 max-w-2xl text-sm text-[var(--sea-ink-soft)]">
+						I design systems that are reliable, observable, and easy to evolve —
+						from data models and APIs to deployment pipelines.
+					</p>
+				</div>
+				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{systemDesignSkills.map((skill, index) => (
+						<div
+							key={skill.title}
+							className="island-shell rise-in flex items-start gap-3 rounded-2xl p-5"
+							style={{ animationDelay: `${index * 80 + 500}ms` }}
+						>
+							<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgba(79,184,178,0.14)] text-[var(--lagoon-deep)]">
+								<skill.icon size={20} />
+							</div>
+							<div>
+								<h3 className="m-0 text-sm font-semibold text-[var(--sea-ink)]">
+									{skill.title}
+								</h3>
+								<p className="m-0 mt-1 text-sm text-[var(--sea-ink-soft)]">
+									{skill.description}
+								</p>
+							</div>
+						</div>
 					))}
 				</div>
 			</section>

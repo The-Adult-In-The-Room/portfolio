@@ -1,34 +1,26 @@
+import { projects } from "#/constants/projects";
 import { expect, test } from "../fixtures/test";
 
+const expectedProjects = projects.map((project) => project.title);
+
 test.describe("GIVEN a visitor on the projects page", () => {
-	test("WHEN they select a category tab THEN only matching projects are shown", async ({
+	test("WHEN the page loads THEN project cards are displayed", async ({
 		projectsPage,
 	}) => {
 		await test.step("GIVEN the visitor is on the projects page", async () => {
 			await projectsPage.goto();
 			await expect(projectsPage.heading).toBeVisible();
-			await expect(projectsPage.projectCards).toHaveCount(5);
 		});
 
-		await test.step("WHEN they filter to Full Stack THEN only full-stack projects are shown", async () => {
-			await projectsPage.filterByCategory("Full Stack");
-			await expect(projectsPage.projectCards).toHaveCount(1);
-			await expect(
-				projectsPage.projectCards.getByText("Lorebrary"),
-			).toBeVisible();
-		});
-
-		await test.step("WHEN they filter to Frontend THEN only frontend projects are shown", async () => {
-			await projectsPage.filterByCategory("Frontend");
-			await expect(projectsPage.projectCards).toHaveCount(2);
-		});
-
-		await test.step("WHEN they filter to Tools THEN only tools projects are shown", async () => {
-			await projectsPage.filterByCategory("Tools");
-			await expect(projectsPage.projectCards).toHaveCount(1);
-			await expect(
-				projectsPage.projectCards.getByText("POE2 Tools"),
-			).toBeVisible();
+		await test.step("THEN project cards are visible", async () => {
+			await expect(projectsPage.projectCards).toHaveCount(
+				expectedProjects.length,
+			);
+			for (const title of expectedProjects) {
+				await expect(
+					projectsPage.projectCards.getByText(title, { exact: true }),
+				).toBeVisible();
+			}
 		});
 	});
 });
