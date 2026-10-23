@@ -41,6 +41,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head>
+				<script
+					defer
+					src="https://umami-production-46f9.up.railway.app/script.js"
+					data-website-id="0b3e494e-c4dc-4377-b1e1-36039ebaf0db"
+				/>
 				{/** biome-ignore lint/security/noDangerouslySetInnerHtml: <Tanstack Start> */}
 				<script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
 				<HeadContent />
