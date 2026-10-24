@@ -24,4 +24,12 @@ export class AboutPage {
 			name: "reusable workflows repository",
 		});
 	}
+
+	async clickSwissCheeseLink() {
+		await this.swissCheeseLink.click();
+	}
+
+	async clickWorkflowsRepositoryLink() {
+		await this.workflowsRepositoryLink.click();
+	}
 }
