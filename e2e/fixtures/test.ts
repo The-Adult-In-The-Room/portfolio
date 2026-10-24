@@ -3,6 +3,7 @@ import { AboutPage } from "../pages/AboutPage";
 import { HomePage } from "../pages/HomePage";
 import { Navigation } from "../pages/Navigation";
 import { ProjectsPage } from "../pages/ProjectsPage";
+import { SeoPage } from "../pages/SeoPage";
 import { ThemeToggle } from "../pages/ThemeToggle";
 import { LIGHTPANDA_WS_ENDPOINT } from "./lightpanda";
 
@@ -12,6 +13,7 @@ export const test = base.extend<{
 	projectsPage: ProjectsPage;
 	navigation: Navigation;
 	themeToggle: ThemeToggle;
+	seoPage: SeoPage;
 }>({
 	browser: async (
 		// biome-ignore lint/correctness/noEmptyPattern: Playwright fixture signature requires object destructuring.
@@ -44,6 +46,9 @@ export const test = base.extend<{
 	},
 	themeToggle: async ({ page }, use) => {
 		await use(new ThemeToggle(page));
+	},
+	seoPage: async ({ page }, use) => {
+		await use(new SeoPage(page));
 	},
 });
 
