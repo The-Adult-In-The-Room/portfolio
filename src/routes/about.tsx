@@ -1,5 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Briefcase, Code2, Heart, Lightbulb, MapPin } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+	Briefcase,
+	Code2,
+	Cog,
+	FlaskConical,
+	Gauge,
+	Heart,
+	Layers,
+	MapPin,
+} from "lucide-react";
 import { Badge } from "#/components/ui/badge";
 
 export const Route = createFileRoute("/about")({ component: About });
@@ -26,12 +36,29 @@ const skills = [
 	},
 	{
 		category: "Tools & Other",
-		items: ["Git", "CI/CD", "AWS", "Linux", "Figma", "Testing"],
+		items: [
+			"Git",
+			"CI/CD",
+			"AWS",
+			"Linux",
+			"Figma",
+			"Testing",
+			"Excalidraw",
+			"Flowcharting",
+		],
 	},
 ];
-const focus = [
+
+type FocusArea = {
+	area: string;
+	icon: LucideIcon;
+	content: React.ReactNode;
+};
+
+const focus: FocusArea[] = [
 	{
 		area: "Testing",
+		icon: FlaskConical,
 		content: (
 			<p>
 				As a true disciple of multi-layer automated testing, I follow a{" "}
@@ -50,6 +77,7 @@ const focus = [
 	},
 	{
 		area: "Automation",
+		icon: Cog,
 		content: (
 			<p>
 				I love devising CI/CD pipelines that deliver sophisticated software on a
@@ -70,6 +98,7 @@ const focus = [
 	},
 	{
 		area: "Performance",
+		icon: Gauge,
 		content: (
 			<p>
 				Nothing excites me more than benchmarking a performance issue.
@@ -83,6 +112,7 @@ const focus = [
 	},
 	{
 		area: "Architecture",
+		icon: Layers,
 		content: (
 			<p>
 				Clean architecture yields plans that allow teams to deliver, as well as
@@ -135,17 +165,23 @@ function About() {
 			<section className="mt-8 grid gap-6 lg:grid-cols-5">
 				<div className="lg:col-span-3">
 					<div className="island-shell rounded-2xl p-6">
-						<div className="mb-4 flex items-center gap-2">
-							<Lightbulb size={18} className="text-[var(--lagoon-deep)]" />
-							<h2 className="m-0 text-lg font-bold text-[var(--sea-ink)]">
-								Focus
-							</h2>
-						</div>
-						<div className="flex flex-col gap-6">
+						<div className="flex flex-col">
 							{focus.map((item) => (
-								<div key={item.area}>
-									<h3>{item.area}</h3>
-									{item.content}
+								<div
+									key={item.area}
+									className="group flex gap-4 border-b border-[var(--line)] py-5 first:pt-0 last:border-b-0 last:pb-0"
+								>
+									<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--line)] bg-[var(--surface-strong)] text-[var(--lagoon-deep)] transition-colors group-hover:border-[var(--lagoon-deep)]/30">
+										<item.icon size={20} />
+									</div>
+									<div>
+										<h3 className="mb-2 text-base font-bold text-[var(--sea-ink)]">
+											{item.area}
+										</h3>
+										<div className="text-[15px] leading-7 text-[var(--sea-ink-soft)] [&_a]:font-medium [&_a]:text-[var(--lagoon-deep)] [&_a]:underline [&_a]:decoration-[var(--lagoon-deep)]/30 [&_a]:underline-offset-4 [&_a]:transition-colors [&_a:hover]:decoration-[var(--lagoon-deep)]">
+											{item.content}
+										</div>
+									</div>
 								</div>
 							))}
 						</div>
@@ -193,6 +229,9 @@ function About() {
 								"Performance",
 								"Accessibility",
 								"Web Standards",
+								"System Design",
+								"Automation",
+								"Testing",
 							].map((interest) => (
 								<Badge key={interest} variant="accent">
 									{interest}
