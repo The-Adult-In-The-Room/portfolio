@@ -1,21 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Briefcase, Code2, Heart, MapPin } from "lucide-react";
+import { Briefcase, Code2, Heart, Lightbulb, MapPin } from "lucide-react";
 import { Badge } from "#/components/ui/badge";
-import { Separator } from "#/components/ui/separator";
 
 export const Route = createFileRoute("/about")({ component: About });
 
 const skills = [
 	{
 		category: "Languages",
-		items: ["TypeScript", "JavaScript", "Go", "Rust", "Python", "SQL"],
+		items: ["TypeScript", "JavaScript", "Go", "Python"],
 	},
 	{
 		category: "Frontend",
 		items: [
 			"React",
 			"Next.js",
-			"TanStack Router",
+			"TanStack Start",
 			"Tailwind CSS",
 			"Shadcn UI",
 			"Framer Motion",
@@ -30,28 +29,71 @@ const skills = [
 		items: ["Git", "CI/CD", "AWS", "Linux", "Figma", "Testing"],
 	},
 ];
-
-const experience = [
+const focus = [
 	{
-		role: "Senior Software Engineer",
-		company: "Tech Company",
-		period: "2022 — Present",
-		description:
-			"Leading frontend architecture and developer experience initiatives. Building scalable design systems and mentoring junior engineers.",
+		area: "Testing",
+		content: (
+			<p>
+				As a true disciple of multi-layer automated testing, I follow a{" "}
+				<a
+					href="https://www.semblanceoffunctionality.com/swiss-cheese/"
+					target="_blank"
+					rel="noopener"
+				>
+					"Swiss Cheese Model"
+				</a>{" "}
+				testing approach of: unit, acceptance, smoke, regression. All of my
+				personal projects abide by this, as well as accessibility and
+				performance testing via Lighthouse.
+			</p>
+		),
 	},
 	{
-		role: "Software Engineer",
-		company: "Startup Inc.",
-		period: "2020 — 2022",
-		description:
-			"Full-stack development on a real-time collaboration platform. Shipped features used by thousands of daily active users.",
+		area: "Automation",
+		content: (
+			<p>
+				I love devising CI/CD pipelines that deliver sophisticated software on a
+				budget, as displayed in my{" "}
+				<a
+					href="https://github.com/The-Adult-In-The-Room/ci-workflows"
+					target="_blank"
+					rel="noopener"
+				>
+					reusable workflows repository
+				</a>
+				. Over my career I've constantly experimented with different
+				infrastructure platforms as well as the most cost-effective ways to make
+				lemonade out of lemons. I know how to keep operating costs at pennies,
+				not dollars.
+			</p>
+		),
 	},
 	{
-		role: "Junior Developer",
-		company: "Digital Agency",
-		period: "2019 — 2020",
-		description:
-			"Built responsive web applications and e-commerce sites for clients across various industries.",
+		area: "Performance",
+		content: (
+			<p>
+				Nothing excites me more than benchmarking a performance issue.
+				Quantifying gains from before and afters measures the true outcome. This
+				teaches lessons on judgement and justification, as everything is a
+				tradeoff. There are scenarios the time, money, and complexity invested
+				aren't worth the results. The ability to recognize this yields an
+				experienced developer with the wisdom to guide others.
+			</p>
+		),
+	},
+	{
+		area: "Architecture",
+		content: (
+			<p>
+				Clean architecture yields plans that allow teams to deliver, as well as
+				systems that extend beyond themselves and stand the test of time.
+				Systems design has been a heavy focus for myself over the past few
+				years. I have a knack for turning loose business requirements into a
+				well understood plan that spans multiple cross-team domains by
+				collaborating with system owners. The most important part is distilling
+				domain complexity into a simplistic aerial integration plan.
+			</p>
+		),
 	},
 ];
 
@@ -62,7 +104,7 @@ function About() {
 				<div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.2),transparent_66%)]" />
 				<div className="flex flex-col gap-6 sm:flex-row sm:items-start">
 					<div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[var(--line)] bg-[linear-gradient(135deg,rgba(79,184,178,0.2),rgba(47,106,74,0.15))]">
-						<span className="display-title text-3xl font-bold text-[var(--lagoon-deep)]">
+						<span className="display-title text-3xl font-bold text-bold text-[var(--lagoon-deep)]">
 							R
 						</span>
 					</div>
@@ -94,31 +136,16 @@ function About() {
 				<div className="lg:col-span-3">
 					<div className="island-shell rounded-2xl p-6">
 						<div className="mb-4 flex items-center gap-2">
-							<Briefcase size={18} className="text-[var(--lagoon-deep)]" />
+							<Lightbulb size={18} className="text-[var(--lagoon-deep)]" />
 							<h2 className="m-0 text-lg font-bold text-[var(--sea-ink)]">
-								Experience
+								Focus
 							</h2>
 						</div>
 						<div className="flex flex-col gap-6">
-							{experience.map((job, index) => (
-								<div key={job.role}>
-									{index > 0 && <Separator className="mb-6" />}
-									<div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
-										<div>
-											<h3 className="m-0 text-sm font-semibold text-[var(--sea-ink)]">
-												{job.role}
-											</h3>
-											<p className="m-0 text-sm text-[var(--lagoon-deep)]">
-												{job.company}
-											</p>
-										</div>
-										<p className="m-0 text-xs text-[var(--sea-ink-soft)] sm:mt-1">
-											{job.period}
-										</p>
-									</div>
-									<p className="m-0 mt-2 text-sm leading-relaxed text-[var(--sea-ink-soft)]">
-										{job.description}
-									</p>
+							{focus.map((item) => (
+								<div key={item.area}>
+									<h3>{item.area}</h3>
+									{item.content}
 								</div>
 							))}
 						</div>
