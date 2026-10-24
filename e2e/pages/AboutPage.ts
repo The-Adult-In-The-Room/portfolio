@@ -14,4 +14,22 @@ export class AboutPage {
 	get skillsSection() {
 		return this.page.getByRole("heading", { name: "Skills" });
 	}
+
+	get swissCheeseLink() {
+		return this.page.getByRole("link", { name: "Swiss Cheese Model" });
+	}
+
+	get workflowsRepositoryLink() {
+		return this.page.getByRole("link", {
+			name: "reusable workflows repository",
+		});
+	}
+
+	async clickSwissCheeseLink() {
+		await this.swissCheeseLink.click();
+	}
+
+	async clickWorkflowsRepositoryLink() {
+		await this.workflowsRepositoryLink.click();
+	}
 }

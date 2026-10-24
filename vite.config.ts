@@ -7,5 +7,16 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
 	resolve: { tsconfigPaths: true },
-	plugins: [devtools(), nitro(), tailwindcss(), tanstackStart(), viteReact()],
+	plugins: [
+		devtools(),
+		nitro(),
+		tailwindcss(),
+		tanstackStart({
+			prerender: {
+				enabled: true,
+				crawlLinks: true,
+			},
+		}),
+		viteReact(),
+	],
 });
