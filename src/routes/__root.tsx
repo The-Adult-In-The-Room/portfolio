@@ -3,6 +3,12 @@ import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import {
+	OG_IMAGE_URL,
+	SITE_DESCRIPTION,
+	SITE_NAME,
+	SITE_URL,
+} from "../constants/site";
 
 import appCss from "../styles.css?url";
 
@@ -19,16 +25,55 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "Raymond — Software Engineer",
+				title: SITE_NAME,
 			},
 			{
 				name: "description",
-				content:
-					"Software engineer building fast, accessible, and polished web experiences.",
+				content: SITE_DESCRIPTION,
 			},
 			{
 				name: "theme-color",
 				content: "#0f172a",
+			},
+			{
+				property: "og:title",
+				content: SITE_NAME,
+			},
+			{
+				property: "og:description",
+				content: SITE_DESCRIPTION,
+			},
+			{
+				property: "og:image",
+				content: OG_IMAGE_URL,
+			},
+			{
+				property: "og:url",
+				content: SITE_URL,
+			},
+			{
+				property: "og:type",
+				content: "website",
+			},
+			{
+				name: "twitter:card",
+				content: "summary_large_image",
+			},
+			{
+				name: "twitter:title",
+				content: SITE_NAME,
+			},
+			{
+				name: "twitter:description",
+				content: SITE_DESCRIPTION,
+			},
+			{
+				name: "twitter:image",
+				content: OG_IMAGE_URL,
+			},
+			{
+				name: "twitter:url",
+				content: SITE_URL,
 			},
 		],
 		links: [
