@@ -1,12 +1,14 @@
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { redact } from "@tanstack/redact/vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
 	resolve: { tsconfigPaths: true },
+	ssr: { noExternal: true },
 	plugins: [
 		devtools(),
 		nitro(),
@@ -18,5 +20,8 @@ export default defineConfig({
 			},
 		}),
 		viteReact(),
+		redact({
+			features: { activity: false, fragmentRefs: false, portal: false },
+		}),
 	],
 });
