@@ -73,7 +73,7 @@
 		"@playwright/test": "^1.65.0",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tanstack/devtools-vite": "^0.8.6",
-		"@tanstack/router-cli": "^1.167.46",
+		"@tanstack/router-cli": "^1.168.0",
 		"@testing-library/dom": "^10.4.2",
 		"@testing-library/jest-dom": "^7.0.1",
 		"@testing-library/react": "^16.3.3",
