@@ -70,7 +70,7 @@
 		"@biomejs/biome": "^2.6.7",
 		"@lhci/cli": "^0.16.1",
 		"@lightpanda/browser": "^1.6.0",
-		"@playwright/test": "^1.65.0",
+		"@playwright/test": "^1.65.1",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tanstack/devtools-vite": "^0.8.6",
 		"@tanstack/router-cli": "^1.168.0",
