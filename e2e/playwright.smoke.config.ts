@@ -11,8 +11,8 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
 	reporter: process.env.CI ? "dot" : "list",
-	globalSetup: "./e2e/fixtures/globalSetup.ts",
-	globalTeardown: "./e2e/fixtures/globalTeardown.ts",
+	globalSetup: "./fixtures/globalSetup.ts",
+	globalTeardown: "./fixtures/globalTeardown.ts",
 	use: {
 		baseURL: process.env.SMOKE_BASE_URL,
 		trace: "on-first-retry",
@@ -23,7 +23,7 @@ export default defineConfig({
 	projects: [
 		{
 			name: "smoke",
-			testDir: "./e2e/smoke",
+			testDir: "./smoke",
 		},
 	],
 });
