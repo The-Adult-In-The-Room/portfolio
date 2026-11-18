@@ -187,9 +187,9 @@ function About() {
 										<item.icon size={20} />
 									</div>
 									<div>
-										<h3 className="mb-2 text-base font-bold text-[var(--sea-ink)]">
+										<h2 className="mb-2 text-base font-bold text-[var(--sea-ink)]">
 											{item.area}
-										</h3>
+										</h2>
 										<div className="text-[15px] leading-7 text-[var(--sea-ink-soft)] [&_a]:font-medium [&_a]:text-[var(--lagoon-deep)] [&_a]:underline [&_a]:decoration-[var(--lagoon-deep)]/30 [&_a]:underline-offset-4 [&_a]:transition-colors [&_a:hover]:decoration-[var(--lagoon-deep)]">
 											{item.content}
 										</div>
