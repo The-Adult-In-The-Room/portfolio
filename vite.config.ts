@@ -8,7 +8,6 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
 	resolve: { tsconfigPaths: true },
-	ssr: { noExternal: true },
 	plugins: [
 		devtools(),
 		nitro(),
