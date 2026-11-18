@@ -10,7 +10,7 @@ export default defineConfig({
 	resolve: { tsconfigPaths: true },
 	plugins: [
 		devtools(),
-		nitro(),
+		nitro({ compressPublicAssets: true }),
 		tailwindcss(),
 		tanstackStart({
 			prerender: {
