@@ -31,9 +31,10 @@ This project follows **Acceptance Test Driven Development (ATDD)** and **Behavio
 | Unit | Vitest + React Testing Library | Components, utilities, UI variants | `npm run test:ci` |
 | Acceptance | Playwright | Full happy paths: navigation, theme toggle, project filtering | `npm run test:e2e:acceptance` |
 | Smoke | Playwright | App loads, pages render, no runtime errors | `npm run test:e2e:smoke` |
+| Regression | Playwright | Deployed-environment checks: external links are safe and reachable | `npm run test:e2e:regression` |
 | Lighthouse | Lighthouse CI | Performance, accessibility, best practices, SEO | `npm run lighthouse` |
 
-Unit tests run with `happy-dom` and enforce 95% coverage thresholds on the included source tree. Playwright suites build the app and run against the production preview server.
+Unit tests run with `happy-dom` and enforce 95% coverage thresholds on the included source tree. The acceptance suite builds the app and runs against the production preview server. The smoke and regression suites run against a deployed environment — set `SMOKE_BASE_URL` or `REGRESSION_BASE_URL` to the target URL before running them.
 
 ### Lighthouse Audits
 
