@@ -16,4 +16,14 @@ export class HomePage {
 	get viewWorkButton() {
 		return this.page.getByRole("link", { name: /View My Work/i });
 	}
+
+	get featuredHeading() {
+		return this.page.getByRole("heading", { name: "Featured In" });
+	}
+
+	featureLink(publication: string) {
+		return this.page.getByRole("link", {
+			name: `View on ${publication}`,
+		});
+	}
 }
