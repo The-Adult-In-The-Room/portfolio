@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
 	ArrowRight,
+	ArrowUpRight,
 	Cloud,
 	Code2,
 	Database,
@@ -20,6 +21,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "#/components/ui/card";
+import { features } from "#/constants/features";
 import { projects } from "#/constants/projects";
 
 export const Route = createFileRoute("/")({ component: Home });
@@ -148,6 +150,49 @@ function Home() {
 										</Badge>
 									))}
 								</div>
+							</CardContent>
+						</Card>
+					))}
+				</div>
+			</section>
+
+			<section className="mt-12">
+				<div className="mb-6">
+					<p className="island-kicker mb-1">Recognition</p>
+					<h2 className="display-title m-0 text-2xl font-bold text-[var(--sea-ink)] sm:text-3xl">
+						Featured In
+					</h2>
+				</div>
+				<div className="grid gap-4 sm:grid-cols-2">
+					{features.map((feature, index) => (
+						<Card
+							key={feature.publication}
+							className="rise-in transition-transform hover:-translate-y-1"
+							style={{ animationDelay: `${index * 100 + 400}ms` }}
+						>
+							<CardHeader>
+								<div className="flex items-start justify-between gap-2">
+									<CardTitle className="text-lg">
+										{feature.publication}
+									</CardTitle>
+									<Badge variant="outline">{feature.year}</Badge>
+								</div>
+								<CardDescription>{feature.projectTitle}</CardDescription>
+							</CardHeader>
+							<CardContent>
+								<p className="mb-4 text-sm leading-relaxed text-[var(--sea-ink-soft)]">
+									{feature.description}
+								</p>
+								<Button asChild variant="secondary" size="sm">
+									<a
+										href={feature.publicationUrl}
+										target="_blank"
+										rel="noreferrer"
+									>
+										View on {feature.publication}
+										<ArrowUpRight size={14} />
+									</a>
+								</Button>
 							</CardContent>
 						</Card>
 					))}

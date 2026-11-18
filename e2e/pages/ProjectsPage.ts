@@ -14,4 +14,10 @@ export class ProjectsPage {
 	get projectCards() {
 		return this.page.locator("[data-slot='card']");
 	}
+
+	featuredLink(projectTitle: string, publication: string) {
+		return this.projectCards
+			.filter({ hasText: projectTitle })
+			.getByRole("link", { name: publication });
+	}
 }
