@@ -69,7 +69,7 @@
 		"tailwindcss": "^4.3.2"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.6.7",
+		"@biomejs/biome": "^2.6.8",
 		"@lhci/cli": "^0.16.1",
 		"@lightpanda/browser": "^1.6.0",
 		"@playwright/test": "^1.65.1",
