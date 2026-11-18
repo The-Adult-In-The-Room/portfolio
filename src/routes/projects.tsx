@@ -15,9 +15,21 @@ import {
 import { Separator } from "#/components/ui/separator";
 import { features } from "#/constants/features";
 import { projects } from "#/constants/projects";
+import { buildCanonicalUrl } from "#/lib/seo";
 import type { Project } from "#/types/project";
 
-export const Route = createFileRoute("/projects")({ component: Projects });
+export const Route = createFileRoute("/projects")({
+	head: ({ match }) => {
+		const canonicalUrl = buildCanonicalUrl(match.fullPath);
+		return {
+			meta: [
+				{ property: "og:url", content: canonicalUrl },
+				{ name: "twitter:url", content: canonicalUrl },
+			],
+		};
+	},
+	component: Projects,
+});
 
 const statusVariant: Record<
 	Project["status"],

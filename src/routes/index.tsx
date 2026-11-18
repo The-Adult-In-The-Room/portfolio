@@ -23,8 +23,20 @@ import {
 } from "#/components/ui/card";
 import { features } from "#/constants/features";
 import { projects } from "#/constants/projects";
+import { buildCanonicalUrl } from "#/lib/seo";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({
+	head: ({ match }) => {
+		const canonicalUrl = buildCanonicalUrl(match.fullPath);
+		return {
+			meta: [
+				{ property: "og:url", content: canonicalUrl },
+				{ name: "twitter:url", content: canonicalUrl },
+			],
+		};
+	},
+	component: Home,
+});
 
 const stats = [
 	{ label: "Years Experience", value: "8+" },

@@ -11,8 +11,20 @@ import {
 	MapPin,
 } from "lucide-react";
 import { Badge } from "#/components/ui/badge";
+import { buildCanonicalUrl } from "#/lib/seo";
 
-export const Route = createFileRoute("/about")({ component: About });
+export const Route = createFileRoute("/about")({
+	head: ({ match }) => {
+		const canonicalUrl = buildCanonicalUrl(match.fullPath);
+		return {
+			meta: [
+				{ property: "og:url", content: canonicalUrl },
+				{ name: "twitter:url", content: canonicalUrl },
+			],
+		};
+	},
+	component: About,
+});
 
 const skills = [
 	{

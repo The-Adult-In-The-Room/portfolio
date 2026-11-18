@@ -4,6 +4,7 @@ import {
 	SITE_NAME,
 	SITE_URL,
 } from "#/constants/site";
+import { buildCanonicalUrl } from "#/lib/seo";
 import { expect, test } from "../fixtures/test";
 
 test.describe("GIVEN a visitor shares the site", () => {
@@ -100,17 +101,21 @@ test.describe("GIVEN a visitor shares the site", () => {
 		});
 
 		await test.step("THEN Open Graph and Twitter tags are correct", async () => {
+			const canonicalUrl = buildCanonicalUrl("/projects");
 			await expect(seoPage.ogTitleMeta).toHaveAttribute("content", SITE_NAME);
 			await expect(seoPage.ogImageMeta).toHaveAttribute(
 				"content",
 				OG_IMAGE_URL,
 			);
-			await expect(seoPage.ogUrlMeta).toHaveAttribute("content", SITE_URL);
+			await expect(seoPage.ogUrlMeta).toHaveAttribute("content", canonicalUrl);
 			await expect(seoPage.twitterImageMeta).toHaveAttribute(
 				"content",
 				OG_IMAGE_URL,
 			);
-			await expect(seoPage.twitterUrlMeta).toHaveAttribute("content", SITE_URL);
+			await expect(seoPage.twitterUrlMeta).toHaveAttribute(
+				"content",
+				canonicalUrl,
+			);
 		});
 
 		await test.step("THEN the favicon and OG image are reachable", async () => {
@@ -136,17 +141,21 @@ test.describe("GIVEN a visitor shares the site", () => {
 		});
 
 		await test.step("THEN Open Graph and Twitter tags are correct", async () => {
+			const canonicalUrl = buildCanonicalUrl("/about");
 			await expect(seoPage.ogTitleMeta).toHaveAttribute("content", SITE_NAME);
 			await expect(seoPage.ogImageMeta).toHaveAttribute(
 				"content",
 				OG_IMAGE_URL,
 			);
-			await expect(seoPage.ogUrlMeta).toHaveAttribute("content", SITE_URL);
+			await expect(seoPage.ogUrlMeta).toHaveAttribute("content", canonicalUrl);
 			await expect(seoPage.twitterImageMeta).toHaveAttribute(
 				"content",
 				OG_IMAGE_URL,
 			);
-			await expect(seoPage.twitterUrlMeta).toHaveAttribute("content", SITE_URL);
+			await expect(seoPage.twitterUrlMeta).toHaveAttribute(
+				"content",
+				canonicalUrl,
+			);
 		});
 
 		await test.step("THEN the favicon and OG image are reachable", async () => {
