@@ -64,7 +64,8 @@ The project enforces **95% coverage thresholds** for statements, branches, funct
 
 ### Playwright / E2E
 
-- E2E specs live in `e2e/acceptance/` and `e2e/smoke/`.
+- Playwright configs live in `e2e/` (`playwright.config.ts`, `playwright.smoke.config.ts`, `playwright.regression.config.ts`).
+- E2E specs live in `e2e/acceptance/`, `e2e/smoke/`, and `e2e/regression/`.
 - Import `test` and `expect` from `../fixtures/test`, not from `@playwright/test` directly.
 - Use fixture-injected Page Objects (`homePage`, `projectsPage`, `aboutPage`, `navigation`, `themeToggle`).
 - Page objects live in `e2e/pages/` and encapsulate all selectors and page interactions.
@@ -75,6 +76,7 @@ The project enforces **95% coverage thresholds** for statements, branches, funct
 - Use `test.step` to break multi-step acceptance tests into explicit Given / When / Then boundaries so the report output shows each step.
 - Add or update acceptance tests for any new user-facing behavior or changed happy paths.
 - Run `npm run test:e2e:acceptance` and `npm run test:e2e:smoke` when the change touches pages, navigation, or theme behavior.
+- The smoke and regression suites target a deployed environment: smoke requires `SMOKE_BASE_URL` and regression requires `REGRESSION_BASE_URL`, each set to the deployed URL. The regression suite (`npm run test:e2e:regression`) verifies deployed-environment concerns such as external links being safe and reachable — run it after deployment rather than locally.
 
 ## Code Organization
 
@@ -108,5 +110,6 @@ The project enforces **95% coverage thresholds** for statements, branches, funct
 | `npm test -- --run` | Run tests with coverage |
 | `npm run test:e2e:acceptance` | Run Playwright acceptance suite |
 | `npm run test:e2e:smoke` | Run Playwright smoke suite |
+| `npm run test:e2e:regression` | Run Playwright regression suite (requires `REGRESSION_BASE_URL`) |
 | `npm run fix` | Auto-fix Biome issues |
 | `npx tsc --noEmit` | Type-check only |
