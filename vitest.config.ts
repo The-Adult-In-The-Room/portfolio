@@ -11,6 +11,7 @@ export default defineConfig({
 			exclude: [
 				"**/index.ts",
 				"**/index.tsx",
+				"src/constants",
 				"src/types",
 				"src/data",
 				"src/routes/**",
