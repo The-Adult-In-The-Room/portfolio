@@ -38,24 +38,39 @@ Unit tests run with `happy-dom` and enforce 95% coverage thresholds on the inclu
 
 ### Lighthouse Audits
 
-Lighthouse CI audits the production build for every route. The default run checks mobile emulation; desktop emulation is also available.
+Lighthouse CI audits the production build for every route using mobile emulation.
 
 ```bash
-npm run lighthouse              # Build and audit mobile + desktop
-npm run lighthouse:mobile       # Audit mobile only
-npm run lighthouse:desktop      # Audit desktop only
+npm run lighthouse     # Build, then audit every route
+npx lhci autorun       # Audit an existing build without rebuilding
 ```
 
-Minimum category thresholds are defined in `lighthouserc.yml` (mobile) and `lighthouserc.desktop.yml`:
+A local Chrome or Chromium installation is required. Reports are written to `.lighthouseci/`, and shareable report URLs are printed at the end of the run.
 
-| Category | Mobile | Desktop |
-| --- | --- | --- |
-| Performance | 0.70 | 0.95 |
-| Accessibility | 0.95 | 0.95 |
-| Best Practices | 0.95 | 0.95 |
-| SEO | 0.90 | 0.90 |
+#### Scores
 
-A local Chrome or Chromium installation is required. Reports are written to `.lighthouseci/`.
+Median of 3 runs per route against the local production build (`npm run start`), last measured on 18 November 2026.
+
+| Route | Performance | Accessibility | Best Practices | SEO |
+| --- | --- | --- | --- | --- |
+| `/` | 100 | 100 | 100 | 100 |
+| `/about` | 100 | 100 | 100 | 100 |
+| `/projects` | 100 | 100 | 100 | 100 |
+
+These are local numbers, not deployed-environment guarantees.
+
+#### Thresholds
+
+Minimum category thresholds are defined in `lighthouserc.yml`. It currently requires a perfect score in every category:
+
+| Category | Minimum |
+| --- | --- |
+| Performance | 1.00 |
+| Accessibility | 1.00 |
+| Best Practices | 1.00 |
+| SEO | 1.00 |
+
+Because the gate requires a perfect score, any regression in any category fails the audit.
 
 ### Page Object Model
 
