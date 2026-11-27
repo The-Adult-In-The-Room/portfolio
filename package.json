@@ -67,7 +67,7 @@
 		"tailwindcss": "^4.3.2"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.6.8",
+		"@biomejs/biome": "^2.6.9",
 		"@lhci/cli": "^0.16.1",
 		"@lightpanda/browser": "^1.6.0",
 		"@playwright/test": "^1.65.1",
@@ -84,7 +84,7 @@
 		"@vitejs/plugin-react": "^6.3.0",
 		"@vitest/coverage-v8": "^5.1.1",
 		"happy-dom": "^21.0.4",
-		"lint-staged": "^17.6.1",
+		"lint-staged": "^17.6.2",
 		"simple-git-hooks": "^2.14.0",
 		"typescript": "^7.0.2",
 		"vite": "^8.3.8",
